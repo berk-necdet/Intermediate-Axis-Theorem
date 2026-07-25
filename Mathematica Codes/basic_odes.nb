@@ -1,0 +1,613 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     20423,        603]
+NotebookOptionsPosition[     18138,        562]
+NotebookOutlinePosition[     18536,        578]
+CellTagsIndexPosition[     18493,        575]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"FrontEndExecute", "[", 
+   RowBox[{"FrontEndToken", "[", "\"\<DeleteGeneratedCells\>\"", "]"}], "]"}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"PHYSICAL", " ", "PARAMETERS"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Principal", " ", "Mass", " ", "Moments", " ", "of", " ", "Inertia", " ", 
+    "from", " ", "Siemens", " ", "NX"}], "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Ix", "=", "8.394"}], ";"}], "   ", 
+  RowBox[{"(*", 
+   RowBox[{"Minimum", " ", "Axis"}], "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Iy", "=", "10.065"}], ";"}], "  ", 
+  RowBox[{"(*", 
+   RowBox[{"Intermediate", " ", "Axis"}], "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Iz", "=", "16.664"}], ";"}], "  ", 
+  RowBox[{"(*", 
+   RowBox[{"Maximum", " ", "Axis"}], "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", \
+"\"\<=================================================================\>\"", 
+   "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", "\"\<SCENARIO 1: SPIN AROUND MINIMUM AXIS (X-AXIS)\>\"", 
+   "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", "\"\<Assumption: wy * wz = 0  =>  wx' = 0 (Constant Main \
+Spin)\>\"", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "Print", "[", \
+"\"\<=================================================================\>\"", 
+    "]"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Linearized", " ", "Differential", " ", "Equations", " ", "for", " ", 
+    "Scenario", " ", "1"}], "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{"eqX1", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"wx", "'"}], "[", "t", "]"}], "==", "0"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"eqY1", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"wy", "'"}], "[", "t", "]"}], "==", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"Iz", "-", "Ix"}], ")"}], "/", "Iy"}], ")"}], "*", 
+     RowBox[{"wx", "[", "t", "]"}], "*", 
+     RowBox[{"wz", "[", "t", "]"}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"eqZ1", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"wz", "'"}], "[", "t", "]"}], "==", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"Ix", "-", "Iy"}], ")"}], "/", "Iz"}], ")"}], "*", 
+      RowBox[{"wx", "[", "t", "]"}], "*", 
+      RowBox[{"wy", "[", "t", "]"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Initial", " ", 
+     RowBox[{"Conditions", ":", 
+      RowBox[{"Main", " ", "spin", " ", "on", " ", "X"}]}]}], ",", 
+    RowBox[{"perturbations", " ", "on", " ", "Y", " ", "and", " ", "Z"}]}], 
+   "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"init1", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"wx", "[", "0", "]"}], "==", "5"}], ",", 
+      RowBox[{
+       RowBox[{"wy", "[", "0", "]"}], "==", "0.1"}], ",", 
+      RowBox[{
+       RowBox[{"wz", "[", "0", "]"}], "==", "0.1"}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"Analytical", " ", "Solution", " ", "using", " ", "DSolve"}], 
+   "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"sol1", "=", 
+    RowBox[{"DSolve", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"eqX1", ",", "eqY1", ",", "eqZ1", ",", "init1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"wx", "[", "t", "]"}], ",", 
+        RowBox[{"wy", "[", "t", "]"}], ",", 
+        RowBox[{"wz", "[", "t", "]"}]}], "}"}], ",", "t"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Chop", " ", "removes", " ", "negligible", " ", "numerical", " ", 
+    "artifacts", " ", 
+    RowBox[{"(", 
+     RowBox[{"like", " ", 
+      RowBox[{"10", "^", 
+       RowBox[{"-", "16"}]}], " ", "i"}], ")"}]}], "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", "\"\<Equations of Motion for Scenario 1 (STABLE):\>\"", "]"}],
+   ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Chop", "[", 
+   RowBox[{"sol1", "[", 
+    RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", \
+"\"\<\\n=================================================================\>\"",
+    "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", "\"\<SCENARIO 2: SPIN AROUND INTERMEDIATE AXIS (Y-AXIS)\>\"", 
+   "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", "\"\<Assumption: wx * wz = 0  =>  wy' = 0 (Constant Main \
+Spin)\>\"", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "Print", "[", \
+"\"\<=================================================================\>\"", 
+    "]"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Linearized", " ", "Differential", " ", "Equations", " ", "for", " ", 
+    "Scenario", " ", "2"}], "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{"eqX2", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"wx", "'"}], "[", "t", "]"}], "==", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"Iy", "-", "Iz"}], ")"}], "/", "Ix"}], ")"}], "*", 
+     RowBox[{"wy", "[", "t", "]"}], "*", 
+     RowBox[{"wz", "[", "t", "]"}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"eqY2", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"wy", "'"}], "[", "t", "]"}], "==", "0"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"eqZ2", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"wz", "'"}], "[", "t", "]"}], "==", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"Ix", "-", "Iy"}], ")"}], "/", "Iz"}], ")"}], "*", 
+      RowBox[{"wx", "[", "t", "]"}], "*", 
+      RowBox[{"wy", "[", "t", "]"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Initial", " ", 
+     RowBox[{"Conditions", ":", 
+      RowBox[{"Main", " ", "spin", " ", "on", " ", "Y"}]}]}], ",", 
+    RowBox[{"perturbations", " ", "on", " ", "X", " ", "and", " ", "Z"}]}], 
+   "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"init2", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"wx", "[", "0", "]"}], "==", "0.1"}], ",", 
+      RowBox[{
+       RowBox[{"wy", "[", "0", "]"}], "==", "5"}], ",", 
+      RowBox[{
+       RowBox[{"wz", "[", "0", "]"}], "==", "0.1"}]}], "}"}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"sol2", "=", 
+    RowBox[{"DSolve", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"eqX2", ",", "eqY2", ",", "eqZ2", ",", "init2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"wx", "[", "t", "]"}], ",", 
+        RowBox[{"wy", "[", "t", "]"}], ",", 
+        RowBox[{"wz", "[", "t", "]"}]}], "}"}], ",", "t"}], "]"}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", "\"\<Equations of Motion for Scenario 2 (UNSTABLE - FLIP \
+OCCURS):\>\"", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Chop", "[", 
+   RowBox[{"sol2", "[", 
+    RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", \
+"\"\<\\n=================================================================\>\"",
+    "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", "\"\<SCENARIO 3: SPIN AROUND MAXIMUM AXIS (Z-AXIS)\>\"", 
+   "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", "\"\<Assumption: wx * wy = 0  =>  wz' = 0 (Constant Main \
+Spin)\>\"", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "Print", "[", \
+"\"\<=================================================================\>\"", 
+    "]"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Linearized", " ", "Differential", " ", "Equations", " ", "for", " ", 
+    "Scenario", " ", "3"}], "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{"eqX3", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"wx", "'"}], "[", "t", "]"}], "==", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"Iy", "-", "Iz"}], ")"}], "/", "Ix"}], ")"}], "*", 
+     RowBox[{"wy", "[", "t", "]"}], "*", 
+     RowBox[{"wz", "[", "t", "]"}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"eqY3", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"wy", "'"}], "[", "t", "]"}], "==", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"Iz", "-", "Ix"}], ")"}], "/", "Iy"}], ")"}], "*", 
+     RowBox[{"wx", "[", "t", "]"}], "*", 
+     RowBox[{"wz", "[", "t", "]"}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"eqZ3", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"wz", "'"}], "[", "t", "]"}], "==", "0"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Initial", " ", 
+     RowBox[{"Conditions", ":", 
+      RowBox[{"Main", " ", "spin", " ", "on", " ", "Z"}]}]}], ",", 
+    RowBox[{"perturbations", " ", "on", " ", "X", " ", "and", " ", "Y"}]}], 
+   "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"init3", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"wx", "[", "0", "]"}], "==", "0.1"}], ",", 
+      RowBox[{
+       RowBox[{"wy", "[", "0", "]"}], "==", "0.1"}], ",", 
+      RowBox[{
+       RowBox[{"wz", "[", "0", "]"}], "==", "5"}]}], "}"}]}], ";"}], "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"sol3", "=", 
+    RowBox[{"DSolve", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"eqX3", ",", "eqY3", ",", "eqZ3", ",", "init3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"wx", "[", "t", "]"}], ",", 
+        RowBox[{"wy", "[", "t", "]"}], ",", 
+        RowBox[{"wz", "[", "t", "]"}]}], "}"}], ",", "t"}], "]"}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", "\"\<Equations of Motion for Scenario 3 (STABLE):\>\"", "]"}],
+   ";"}], "\n", 
+ RowBox[{"Chop", "[", 
+  RowBox[{"sol3", "[", 
+   RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.9937043472400246`*^9, 3.9937043472400246`*^9}, {
+  3.9939074404798985`*^9, 3.993907451584343*^9}, {3.993907527440096*^9, 
+  3.993907529255949*^9}},
+ CellLabel->"In[54]:=",ExpressionUUID->"3fb224d3-ebea-5945-8923-b5cc096644a2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"============================================================\
+=====\"\>"], "Print",
+ CellChangeTimes->{3.9939075311944103`*^9},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"95e4e932-03c1-aa47-aaaf-5fc92db7e81b"],
+
+Cell[BoxData["\<\"SCENARIO 1: SPIN AROUND MINIMUM AXIS (X-AXIS)\"\>"], "Print",
+ CellChangeTimes->{3.99390753119541*^9},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"0c834bcf-9ed4-9e4f-ba4e-4f536e607881"],
+
+Cell[BoxData["\<\"Assumption: wy * wz = 0  =>  wx' = 0 (Constant Main Spin)\"\
+\>"], "Print",
+ CellChangeTimes->{3.993907531196928*^9},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"ce6dd9c5-6fa0-b844-8138-73fed5422bab"],
+
+Cell[BoxData["\<\"============================================================\
+=====\"\>"], "Print",
+ CellChangeTimes->{3.9939075311979523`*^9},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"a649d781-e4bf-d943-b628-03902cf730a5"],
+
+Cell[BoxData["\<\"Equations of Motion for Scenario 1 (STABLE):\"\>"], "Print",
+ CellChangeTimes->{3.9939075311989384`*^9},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"13e0c397-7ffb-5544-9ef2-532245acfc10"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"wx", "[", "t", "]"}], "\[Rule]", "5"}], ",", 
+   RowBox[{
+    RowBox[{"wy", "[", "t", "]"}], "\[Rule]", 
+    RowBox[{"0.1`", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"1.`", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"1.4352067424575918`", " ", "t"}], "]"}]}], "+", 
+       RowBox[{"2.862511688367842`", " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"1.4352067424575918`", " ", "t"}], "]"}]}]}], ")"}]}]}], ",", 
+   RowBox[{
+    RowBox[{"wz", "[", "t", "]"}], "\[Rule]", 
+    RowBox[{"0.10000000000000002`", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"1.`", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"1.4352067424575918`", " ", "t"}], "]"}]}], "-", 
+       RowBox[{"0.34934355170098397`", " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"1.4352067424575918`", " ", "t"}], "]"}]}]}], ")"}]}]}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.9939075311999493`*^9},
+ CellLabel->"Out[69]=",ExpressionUUID->"e3deafc2-3426-f54d-8e5e-c692440b3756"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"\\n=========================================================\
+========\"\>"], "Print",
+ CellChangeTimes->{3.9939075312021275`*^9},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"fdb21d6b-9370-4d4a-833d-0690f82c6ae3"],
+
+Cell[BoxData["\<\"SCENARIO 2: SPIN AROUND INTERMEDIATE AXIS (Y-AXIS)\"\>"], \
+"Print",
+ CellChangeTimes->{3.9939075312037888`*^9},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"3e6bedd9-5034-bd4b-a734-f12ec24f5ef6"],
+
+Cell[BoxData["\<\"Assumption: wx * wz = 0  =>  wy' = 0 (Constant Main Spin)\"\
+\>"], "Print",
+ CellChangeTimes->{3.993907531205311*^9},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"cf4c92df-cbc2-0f49-b211-fd9671355ed0"],
+
+Cell[BoxData["\<\"============================================================\
+=====\"\>"], "Print",
+ CellChangeTimes->{3.993907531205921*^9},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"0ea1df3e-8290-ee4b-a0af-f0c962a8cf78"],
+
+Cell[BoxData["\<\"Equations of Motion for Scenario 2 (UNSTABLE - FLIP \
+OCCURS):\"\>"], "Print",
+ CellChangeTimes->{3.9939075312070904`*^9},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"c1b3eb34-75c1-7642-9eb3-fc95ac19c72f"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"wy", "[", "t", "]"}], "\[Rule]", "5"}], ",", 
+   RowBox[{
+    RowBox[{"wx", "[", "t", "]"}], "\[Rule]", 
+    RowBox[{
+     RowBox[{"-", "0.08999934042466258`"}], " ", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", "1.403858004378367`"}], " ", "t"}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "2.111119254076188`"}], "+", 
+       RowBox[{"1.`", " ", 
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"2.807716008756734`", " ", "t"}]]}]}], ")"}]}]}], ",", 
+   RowBox[{
+    RowBox[{"wz", "[", "t", "]"}], "\[Rule]", 
+    RowBox[{"0.03214277301295343`", " ", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", "1.403858004378367`"}], " ", "t"}]], " ", 
+     RowBox[{"(", 
+      RowBox[{"2.1111192540761916`", "\[VeryThinSpace]", "+", 
+       RowBox[{"1.`", " ", 
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"2.807716008756734`", " ", "t"}]]}]}], ")"}]}]}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.9939075312081413`*^9},
+ CellLabel->"Out[80]=",ExpressionUUID->"fb402c59-fae3-5c45-a16a-13104cba413a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"\\n=========================================================\
+========\"\>"], "Print",
+ CellChangeTimes->{3.993907531209799*^9},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"457867b0-47cf-ce4a-b4f4-1693365dc22a"],
+
+Cell[BoxData["\<\"SCENARIO 3: SPIN AROUND MAXIMUM AXIS (Z-AXIS)\"\>"], "Print",
+ CellChangeTimes->{3.993907531211405*^9},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"aa80c606-225b-374d-ae4b-6b3356859e51"],
+
+Cell[BoxData["\<\"Assumption: wx * wy = 0  =>  wz' = 0 (Constant Main Spin)\"\
+\>"], "Print",
+ CellChangeTimes->{3.9939075312125015`*^9},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"093e1a2f-adb6-514c-940a-e7c114433c6b"],
+
+Cell[BoxData["\<\"============================================================\
+=====\"\>"], "Print",
+ CellChangeTimes->{3.993907531214142*^9},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"b291cd8d-1278-a443-b980-ab58ca4dc102"],
+
+Cell[BoxData["\<\"Equations of Motion for Scenario 3 (STABLE):\"\>"], "Print",
+ CellChangeTimes->{3.993907531215664*^9},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"847e7ecd-8aa7-b949-adde-8c2a01b19c51"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"wz", "[", "t", "]"}], "\[Rule]", "5"}], ",", 
+   RowBox[{
+    RowBox[{"wx", "[", "t", "]"}], "\[Rule]", 
+    RowBox[{"0.1`", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"1.`", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"4.018559946341829`", " ", "t"}], "]"}]}], "-", 
+       RowBox[{"0.9781573363949333`", " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"4.018559946341829`", " ", "t"}], "]"}]}]}], ")"}]}]}], ",", 
+   RowBox[{
+    RowBox[{"wy", "[", "t", "]"}], "\[Rule]", 
+    RowBox[{"0.1`", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"1.`", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"4.018559946341829`", " ", "t"}], "]"}]}], "+", 
+       RowBox[{"1.0223304194451672`", " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"4.018559946341829`", " ", "t"}], "]"}]}]}], ")"}]}]}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.9939075312168884`*^9},
+ CellLabel->"Out[91]=",ExpressionUUID->"a6de157a-606b-ae45-9c79-b7f0575b8f5f"]
+}, Open  ]],
+
+Cell[BoxData[" "], "Input",
+ CellChangeTimes->{
+  3.9937062895147095`*^9},ExpressionUUID->"bfe2ba3d-b77d-ce42-95f7-\
+3fc404366a0a"]
+},
+WindowSize->{1269, 646.5},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"15.0 for Microsoft Windows (64-bit) (May 19, 2026)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"25c6f679-8be3-9f4b-a20b-120bbdc480bc"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 10392, 327, 1284, "Input",ExpressionUUID->"3fb224d3-ebea-5945-8923-b5cc096644a2"],
+Cell[CellGroupData[{
+Cell[10993, 353, 250, 5, 22, "Print",ExpressionUUID->"95e4e932-03c1-aa47-aaaf-5fc92db7e81b"],
+Cell[11246, 360, 225, 4, 22, "Print",ExpressionUUID->"0c834bcf-9ed4-9e4f-ba4e-4f536e607881"],
+Cell[11474, 366, 240, 5, 22, "Print",ExpressionUUID->"ce6dd9c5-6fa0-b844-8138-73fed5422bab"],
+Cell[11717, 373, 250, 5, 22, "Print",ExpressionUUID->"a649d781-e4bf-d943-b628-03902cf730a5"],
+Cell[11970, 380, 227, 4, 22, "Print",ExpressionUUID->"13e0c397-7ffb-5544-9ef2-532245acfc10"]
+}, Open  ]],
+Cell[12212, 387, 1058, 29, 32, "Output",ExpressionUUID->"e3deafc2-3426-f54d-8e5e-c692440b3756"],
+Cell[CellGroupData[{
+Cell[13295, 420, 253, 5, 39, "Print",ExpressionUUID->"fdb21d6b-9370-4d4a-833d-0690f82c6ae3"],
+Cell[13551, 427, 235, 5, 22, "Print",ExpressionUUID->"3e6bedd9-5034-bd4b-a734-f12ec24f5ef6"],
+Cell[13789, 434, 240, 5, 22, "Print",ExpressionUUID->"cf4c92df-cbc2-0f49-b211-fd9671355ed0"],
+Cell[14032, 441, 248, 5, 22, "Print",ExpressionUUID->"0ea1df3e-8290-ee4b-a0af-f0c962a8cf78"],
+Cell[14283, 448, 245, 5, 22, "Print",ExpressionUUID->"c1b3eb34-75c1-7642-9eb3-fc95ac19c72f"]
+}, Open  ]],
+Cell[14543, 456, 1163, 31, 34, "Output",ExpressionUUID->"fb402c59-fae3-5c45-a16a-13104cba413a"],
+Cell[CellGroupData[{
+Cell[15731, 491, 251, 5, 39, "Print",ExpressionUUID->"457867b0-47cf-ce4a-b4f4-1693365dc22a"],
+Cell[15985, 498, 226, 4, 22, "Print",ExpressionUUID->"aa80c606-225b-374d-ae4b-6b3356859e51"],
+Cell[16214, 504, 242, 5, 22, "Print",ExpressionUUID->"093e1a2f-adb6-514c-940a-e7c114433c6b"],
+Cell[16459, 511, 248, 5, 22, "Print",ExpressionUUID->"b291cd8d-1278-a443-b980-ab58ca4dc102"],
+Cell[16710, 518, 225, 4, 22, "Print",ExpressionUUID->"847e7ecd-8aa7-b949-adde-8c2a01b19c51"]
+}, Open  ]],
+Cell[16950, 525, 1038, 29, 32, "Output",ExpressionUUID->"a6de157a-606b-ae45-9c79-b7f0575b8f5f"]
+}, Open  ]],
+Cell[18003, 557, 131, 3, 28, "Input",ExpressionUUID->"bfe2ba3d-b77d-ce42-95f7-3fc404366a0a"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

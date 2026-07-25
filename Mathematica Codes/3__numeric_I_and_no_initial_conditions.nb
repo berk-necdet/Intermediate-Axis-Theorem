@@ -1,0 +1,182 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      5634,        174]
+NotebookOptionsPosition[      4965,        155]
+NotebookOutlinePosition[      5361,        171]
+CellTagsIndexPosition[      5318,        168]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"FrontEndExecute", "[", 
+   RowBox[{"FrontEndToken", "[", "\"\<DeleteGeneratedCells\>\"", "]"}], "]"}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"FULLY", " ", "NUMERIC", " ", "PARAMETERS", " ", 
+    RowBox[{"(", 
+     RowBox[{"Moments", " ", "of", " ", "Inertia"}], ")"}]}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ix", "=", 
+   RowBox[{"8314", "/", "1000"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Iy", "=", 
+   RowBox[{"10065", "/", "1000"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Iz", "=", 
+    RowBox[{"16664", "/", "1000"}]}], ";"}], "\n", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "EULER", " ", "EQUATIONS", " ", "OF", " ", "RIGID", " ", "BODY", " ", 
+    "DYNAMICS"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"eq1", "=", 
+   RowBox[{
+    RowBox[{"Ix", "*", 
+     RowBox[{
+      RowBox[{"w1", "'"}], "[", "t", "]"}]}], "==", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"Iy", "-", "Iz"}], ")"}], "*", 
+     RowBox[{"w2", "[", "t", "]"}], "*", 
+     RowBox[{"w3", "[", "t", "]"}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"eq2", "=", 
+   RowBox[{
+    RowBox[{"Iy", "*", 
+     RowBox[{
+      RowBox[{"w2", "'"}], "[", "t", "]"}]}], "==", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"Iz", "-", "Ix"}], ")"}], "*", 
+     RowBox[{"w3", "[", "t", "]"}], "*", 
+     RowBox[{"w1", "[", "t", "]"}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"eq3", "=", 
+    RowBox[{
+     RowBox[{"Iz", "*", 
+      RowBox[{
+       RowBox[{"w3", "'"}], "[", "t", "]"}]}], "==", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"Ix", "-", "Iy"}], ")"}], "*", 
+      RowBox[{"w1", "[", "t", "]"}], "*", 
+      RowBox[{"w2", "[", "t", "]"}]}]}]}], ";"}], "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Print", "[", "\"\<There should be 4 sets of solutions\>\"", "]"}],
+    ";"}], "\[IndentingNewLine]", "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"generalNumericSolution", "=", 
+    RowBox[{"DSolve", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"eq1", ",", "eq2", ",", "eq3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"w1", "[", "t", "]"}], ",", 
+        RowBox[{"w2", "[", "t", "]"}], ",", 
+        RowBox[{"w3", "[", "t", "]"}]}], "}"}], ",", "t"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"orderedSolution", "=", 
+    RowBox[{"Map", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"w1", "[", "t", "]"}], "->", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"w1", "[", "t", "]"}], "/.", " ", "#"}], ")"}]}], ",", 
+         RowBox[{
+          RowBox[{"w2", "[", "t", "]"}], "->", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"w2", "[", "t", "]"}], "/.", " ", "#"}], ")"}]}], ",", 
+         RowBox[{
+          RowBox[{"w3", "[", "t", "]"}], "->", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"w3", "[", "t", "]"}], "/.", " ", "#"}], ")"}]}]}], "}"}],
+        "&"}], ",", "generalNumericSolution"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", "orderedSolution", \
+"\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.9939058503517017`*^9, 3.9939058625265694`*^9}, 
+   3.9939060210985966`*^9, {3.993906387709032*^9, 
+   3.993906398543581*^9}},ExpressionUUID->"3bdf018c-0d06-de4a-9ab7-\
+6d414b4637bf"],
+
+Cell[BoxData["\<\"There should be 4 sets of solutions\"\>"], "Print",
+ CellChangeTimes->{3.9939060835969734`*^9},
+ CellLabel->
+  "During evaluation of \
+In[97]:=",ExpressionUUID->"9899212f-5241-4549-91a8-17179d52b9fd"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "DSolve", "ifun", 
+   "\"Inverse functions are being used by DSolve, so some solutions may not \
+be found.\"", 2, 106, 20, 24659430243105162149, "Local"},
+  "MessageTemplate",
+  BaseStyle->"MSG"]], "Message",
+ CellChangeTimes->{3.9939060850548*^9},
+ CellLabel->
+  "During evaluation of \
+In[97]:=",ExpressionUUID->"0806d188-42a3-0f4a-8f8d-0f5dd5fa7a3b"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.993906381112118*^9, 
+  3.993906381113117*^9}},ExpressionUUID->"b80b6299-b661-a34e-8b41-\
+dc01678f54d8"]
+},
+WindowSize->{1269, 641},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"15.0 for Microsoft Windows (64-bit) (May 19, 2026)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"1930a2c1-ec9e-ec45-bfa5-24c7830218c9"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 3610, 107, 427, "Input",ExpressionUUID->"3bdf018c-0d06-de4a-9ab7-6d414b4637bf"],
+Cell[4189, 131, 218, 4, 22, "Print",ExpressionUUID->"9899212f-5241-4549-91a8-17179d52b9fd"],
+Cell[4410, 137, 384, 10, 26, "Message",ExpressionUUID->"0806d188-42a3-0f4a-8f8d-0f5dd5fa7a3b"]
+}, Open  ]],
+Cell[4809, 150, 152, 3, 28, "Input",ExpressionUUID->"b80b6299-b661-a34e-8b41-dc01678f54d8"]
+}
+]
+*)
+

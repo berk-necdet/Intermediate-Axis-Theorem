@@ -1,0 +1,3985 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[    144804,       3975]
+NotebookOptionsPosition[    144127,       3956]
+NotebookOutlinePosition[    144523,       3972]
+CellTagsIndexPosition[    144480,       3969]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"FrontEndExecute", "[", 
+   RowBox[{"FrontEndToken", "[", "\"\<DeleteGeneratedCells\>\"", "]"}], "]"}],
+   ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "EULER", " ", "EQUATIONS", " ", "OF", " ", "RIGID", " ", "BODY", " ", 
+    "DYNAMICS"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"eq1", "=", 
+   RowBox[{
+    RowBox[{"Ix", "*", 
+     RowBox[{
+      RowBox[{"w1", "'"}], "[", "t", "]"}]}], "==", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"Iy", "-", "Iz"}], ")"}], "*", 
+     RowBox[{"w2", "[", "t", "]"}], "*", 
+     RowBox[{"w3", "[", "t", "]"}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"eq2", "=", 
+   RowBox[{
+    RowBox[{"Iy", "*", 
+     RowBox[{
+      RowBox[{"w2", "'"}], "[", "t", "]"}]}], "==", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"Iz", "-", "Ix"}], ")"}], "*", 
+     RowBox[{"w3", "[", "t", "]"}], "*", 
+     RowBox[{"w1", "[", "t", "]"}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"eq3", "=", 
+    RowBox[{
+     RowBox[{"Iz", "*", 
+      RowBox[{
+       RowBox[{"w3", "'"}], "[", "t", "]"}]}], "==", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"Ix", "-", "Iy"}], ")"}], "*", 
+      RowBox[{"w1", "[", "t", "]"}], "*", 
+      RowBox[{"w2", "[", "t", "]"}]}]}]}], ";"}], "\n", "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "Print", "[", "\"\<(Expect 4 solution sets containing symbolic I's and \
+C[1], C[2], C[3] constants)\>\"", "]"}], ";"}], "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"pureSymbolicSolution", "=", 
+    RowBox[{"DSolve", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"eq1", ",", "eq2", ",", "eq3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"w1", "[", "t", "]"}], ",", 
+        RowBox[{"w2", "[", "t", "]"}], ",", 
+        RowBox[{"w3", "[", "t", "]"}]}], "}"}], ",", "t"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"orderedPureSolution", "=", 
+  RowBox[{"Map", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"w1", "[", "t", "]"}], "->", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"w1", "[", "t", "]"}], "/.", " ", "#"}], ")"}]}], ",", 
+       RowBox[{
+        RowBox[{"w2", "[", "t", "]"}], "->", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"w2", "[", "t", "]"}], "/.", " ", "#"}], ")"}]}], ",", 
+       RowBox[{
+        RowBox[{"w3", "[", "t", "]"}], "->", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"w3", "[", "t", "]"}], "/.", " ", "#"}], ")"}]}]}], "}"}], 
+     "&"}], ",", "pureSymbolicSolution"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.993906556086706*^9, 3.993906597740366*^9}},
+ CellLabel->
+  "In[139]:=",ExpressionUUID->"d159243d-4fc8-d541-8535-762c295530dc"],
+
+Cell[BoxData["\<\"(Expect 4 solution sets containing symbolic I's and C[1], \
+C[2], C[3] constants)\"\>"], "Print",
+ CellChangeTimes->{3.9939066046113205`*^9},
+ CellLabel->
+  "During evaluation of \
+In[139]:=",ExpressionUUID->"0023ce98-719f-b944-8417-8895d3f6879b"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "DSolve", "ifun", 
+   "\"Inverse functions are being used by DSolve, so some solutions may not \
+be found.\"", 2, 145, 31, 24659430243105162149, "Local"},
+  "MessageTemplate",
+  BaseStyle->"MSG"]], "Message",
+ CellChangeTimes->{3.993906606771431*^9},
+ CellLabel->
+  "During evaluation of \
+In[139]:=",ExpressionUUID->"410dd153-7135-f444-a564-f106b824c046"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"w1", "[", "t", "]"}], "\[Rule]", 
+      RowBox[{
+       FractionBox["1", "Ix"], 
+       RowBox[{"(", 
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           SqrtBox["2"], " ", 
+           SuperscriptBox["Iy", "2"], " ", 
+           SqrtBox[
+            RowBox[{"Ix", " ", 
+             RowBox[{"(", 
+              RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+           TemplateBox[{"1"},
+            "C"], " ", 
+           RowBox[{"JacobiSN", "[", 
+            RowBox[{
+             FractionBox[
+              RowBox[{
+               RowBox[{"-", 
+                FractionBox[
+                 RowBox[{
+                  SqrtBox["2"], " ", 
+                  SqrtBox["Ix"], " ", 
+                  SqrtBox["Iy"], " ", 
+                  SqrtBox[
+                   RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                  SqrtBox[
+                   TemplateBox[{"2"},
+                    "C"]]}], 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]]}], 
+                RowBox[{
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]], " ", 
+                 TemplateBox[{"3"},
+                  "C"]}], 
+                SqrtBox[
+                 RowBox[{"Iy", "-", "Iz"}]]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]], " ", 
+                 TemplateBox[{"3"},
+                  "C"]}], 
+                RowBox[{
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+             RowBox[{"-", 
+              FractionBox[
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                TemplateBox[{"1"},
+                 "C"]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                TemplateBox[{"2"},
+                 "C"]}]]}]}], "]"}]}], 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+           SqrtBox[
+            RowBox[{"Iy", " ", 
+             RowBox[{"(", 
+              RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+             TemplateBox[{"1"},
+              "C"]}]]}]], "-", 
+         FractionBox[
+          RowBox[{
+           SqrtBox["2"], " ", "Iy", " ", 
+           SqrtBox[
+            RowBox[{"Ix", " ", 
+             RowBox[{"(", 
+              RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+           TemplateBox[{"1"},
+            "C"], " ", 
+           RowBox[{"JacobiSN", "[", 
+            RowBox[{
+             FractionBox[
+              RowBox[{
+               RowBox[{"-", 
+                FractionBox[
+                 RowBox[{
+                  SqrtBox["2"], " ", 
+                  SqrtBox["Ix"], " ", 
+                  SqrtBox["Iy"], " ", 
+                  SqrtBox[
+                   RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                  SqrtBox[
+                   TemplateBox[{"2"},
+                    "C"]]}], 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]]}], 
+                RowBox[{
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]], " ", 
+                 TemplateBox[{"3"},
+                  "C"]}], 
+                SqrtBox[
+                 RowBox[{"Iy", "-", "Iz"}]]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]], " ", 
+                 TemplateBox[{"3"},
+                  "C"]}], 
+                RowBox[{
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+             RowBox[{"-", 
+              FractionBox[
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                TemplateBox[{"1"},
+                 "C"]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                TemplateBox[{"2"},
+                 "C"]}]]}]}], "]"}]}], 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+           SqrtBox[
+            RowBox[{"Iy", " ", 
+             RowBox[{"(", 
+              RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+             TemplateBox[{"1"},
+              "C"]}]]}]]}], ")"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"w2", "[", "t", "]"}], "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox["1", 
+         SqrtBox[
+          RowBox[{
+           SuperscriptBox["Iy", "2"], "-", 
+           RowBox[{"Iy", " ", "Iz"}]}]]]}], 
+       RowBox[{"(", 
+        RowBox[{"\[Sqrt]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", " ", 
+            SuperscriptBox["Iy", "2"], " ", 
+            TemplateBox[{"1"},
+             "C"]}], "-", 
+           RowBox[{"2", " ", "Iy", " ", "Iz", " ", 
+            TemplateBox[{"1"},
+             "C"]}], "-", 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{
+              FractionBox[
+               RowBox[{
+                SqrtBox["2"], " ", 
+                SuperscriptBox["Iy", "2"], " ", 
+                SqrtBox[
+                 RowBox[{"Ix", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+                TemplateBox[{"1"},
+                 "C"], " ", 
+                RowBox[{"JacobiSN", "[", 
+                 RowBox[{
+                  FractionBox[
+                   RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                  RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                SqrtBox[
+                 RowBox[{"Iy", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                  TemplateBox[{"1"},
+                   "C"]}]]}]], "-", 
+              FractionBox[
+               RowBox[{
+                SqrtBox["2"], " ", "Iy", " ", 
+                SqrtBox[
+                 RowBox[{"Ix", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+                TemplateBox[{"1"},
+                 "C"], " ", 
+                RowBox[{"JacobiSN", "[", 
+                 RowBox[{
+                  FractionBox[
+                   RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                  RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                SqrtBox[
+                 RowBox[{"Iy", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                  TemplateBox[{"1"},
+                   "C"]}]]}]]}], ")"}], "2"], "+", 
+           RowBox[{
+            FractionBox["1", "Ix"], "Iz", " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SuperscriptBox["Iy", "2"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+                 TemplateBox[{"1"},
+                  "C"], " ", 
+                 RowBox[{"JacobiSN", "[", 
+                  RowBox[{
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                   RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                   TemplateBox[{"1"},
+                    "C"]}]]}]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", "Iy", " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+                 TemplateBox[{"1"},
+                  "C"], " ", 
+                 RowBox[{"JacobiSN", "[", 
+                  RowBox[{
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                   RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                   TemplateBox[{"1"},
+                    "C"]}]]}]]}], ")"}], "2"]}]}], ")"}]}], ")"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"w3", "[", "t", "]"}], "\[Rule]", 
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{
+         SqrtBox[
+          RowBox[{"Iy", "-", "Iz"}]], " ", 
+         SqrtBox["Iz"]}]], 
+       RowBox[{"(", 
+        RowBox[{"\[Sqrt]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", " ", "Iy", " ", "Iz", " ", 
+            TemplateBox[{"2"},
+             "C"]}], "-", 
+           RowBox[{"2", " ", 
+            SuperscriptBox["Iz", "2"], " ", 
+            TemplateBox[{"2"},
+             "C"]}], "+", 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{
+              FractionBox[
+               RowBox[{
+                SqrtBox["2"], " ", 
+                SuperscriptBox["Iy", "2"], " ", 
+                SqrtBox[
+                 RowBox[{"Ix", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+                TemplateBox[{"1"},
+                 "C"], " ", 
+                RowBox[{"JacobiSN", "[", 
+                 RowBox[{
+                  FractionBox[
+                   RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                  RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                SqrtBox[
+                 RowBox[{"Iy", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                  TemplateBox[{"1"},
+                   "C"]}]]}]], "-", 
+              FractionBox[
+               RowBox[{
+                SqrtBox["2"], " ", "Iy", " ", 
+                SqrtBox[
+                 RowBox[{"Ix", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+                TemplateBox[{"1"},
+                 "C"], " ", 
+                RowBox[{"JacobiSN", "[", 
+                 RowBox[{
+                  FractionBox[
+                   RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                  RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                SqrtBox[
+                 RowBox[{"Iy", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                  TemplateBox[{"1"},
+                   "C"]}]]}]]}], ")"}], "2"], "-", 
+           RowBox[{
+            FractionBox["1", "Ix"], "Iy", " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SuperscriptBox["Iy", "2"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+                 TemplateBox[{"1"},
+                  "C"], " ", 
+                 RowBox[{"JacobiSN", "[", 
+                  RowBox[{
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                   RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                   TemplateBox[{"1"},
+                    "C"]}]]}]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", "Iy", " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+                 TemplateBox[{"1"},
+                  "C"], " ", 
+                 RowBox[{"JacobiSN", "[", 
+                  RowBox[{
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                   RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                   TemplateBox[{"1"},
+                    "C"]}]]}]]}], ")"}], "2"]}]}], ")"}]}], ")"}]}]}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"w1", "[", "t", "]"}], "\[Rule]", 
+      RowBox[{
+       FractionBox["1", "Ix"], 
+       RowBox[{"(", 
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           SqrtBox["2"], " ", 
+           SuperscriptBox["Iy", "2"], " ", 
+           SqrtBox[
+            RowBox[{"Ix", " ", 
+             RowBox[{"(", 
+              RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+           TemplateBox[{"1"},
+            "C"], " ", 
+           RowBox[{"JacobiSN", "[", 
+            RowBox[{
+             FractionBox[
+              RowBox[{
+               RowBox[{"-", 
+                FractionBox[
+                 RowBox[{
+                  SqrtBox["2"], " ", 
+                  SqrtBox["Ix"], " ", 
+                  SqrtBox["Iy"], " ", 
+                  SqrtBox[
+                   RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                  SqrtBox[
+                   TemplateBox[{"2"},
+                    "C"]]}], 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]]}], 
+                RowBox[{
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]], " ", 
+                 TemplateBox[{"3"},
+                  "C"]}], 
+                SqrtBox[
+                 RowBox[{"Iy", "-", "Iz"}]]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]], " ", 
+                 TemplateBox[{"3"},
+                  "C"]}], 
+                RowBox[{
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+             RowBox[{"-", 
+              FractionBox[
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                TemplateBox[{"1"},
+                 "C"]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                TemplateBox[{"2"},
+                 "C"]}]]}]}], "]"}]}], 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+           SqrtBox[
+            RowBox[{"Iy", " ", 
+             RowBox[{"(", 
+              RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+             TemplateBox[{"1"},
+              "C"]}]]}]], "-", 
+         FractionBox[
+          RowBox[{
+           SqrtBox["2"], " ", "Iy", " ", 
+           SqrtBox[
+            RowBox[{"Ix", " ", 
+             RowBox[{"(", 
+              RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+           TemplateBox[{"1"},
+            "C"], " ", 
+           RowBox[{"JacobiSN", "[", 
+            RowBox[{
+             FractionBox[
+              RowBox[{
+               RowBox[{"-", 
+                FractionBox[
+                 RowBox[{
+                  SqrtBox["2"], " ", 
+                  SqrtBox["Ix"], " ", 
+                  SqrtBox["Iy"], " ", 
+                  SqrtBox[
+                   RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                  SqrtBox[
+                   TemplateBox[{"2"},
+                    "C"]]}], 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]]}], 
+                RowBox[{
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]], " ", 
+                 TemplateBox[{"3"},
+                  "C"]}], 
+                SqrtBox[
+                 RowBox[{"Iy", "-", "Iz"}]]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]], " ", 
+                 TemplateBox[{"3"},
+                  "C"]}], 
+                RowBox[{
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+             RowBox[{"-", 
+              FractionBox[
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                TemplateBox[{"1"},
+                 "C"]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                TemplateBox[{"2"},
+                 "C"]}]]}]}], "]"}]}], 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+           SqrtBox[
+            RowBox[{"Iy", " ", 
+             RowBox[{"(", 
+              RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+             TemplateBox[{"1"},
+              "C"]}]]}]]}], ")"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"w2", "[", "t", "]"}], "\[Rule]", 
+      RowBox[{
+       FractionBox["1", 
+        SqrtBox[
+         RowBox[{
+          SuperscriptBox["Iy", "2"], "-", 
+          RowBox[{"Iy", " ", "Iz"}]}]]], 
+       RowBox[{"(", 
+        RowBox[{"\[Sqrt]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", " ", 
+            SuperscriptBox["Iy", "2"], " ", 
+            TemplateBox[{"1"},
+             "C"]}], "-", 
+           RowBox[{"2", " ", "Iy", " ", "Iz", " ", 
+            TemplateBox[{"1"},
+             "C"]}], "-", 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{
+              FractionBox[
+               RowBox[{
+                SqrtBox["2"], " ", 
+                SuperscriptBox["Iy", "2"], " ", 
+                SqrtBox[
+                 RowBox[{"Ix", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+                TemplateBox[{"1"},
+                 "C"], " ", 
+                RowBox[{"JacobiSN", "[", 
+                 RowBox[{
+                  FractionBox[
+                   RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                  RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                SqrtBox[
+                 RowBox[{"Iy", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                  TemplateBox[{"1"},
+                   "C"]}]]}]], "-", 
+              FractionBox[
+               RowBox[{
+                SqrtBox["2"], " ", "Iy", " ", 
+                SqrtBox[
+                 RowBox[{"Ix", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+                TemplateBox[{"1"},
+                 "C"], " ", 
+                RowBox[{"JacobiSN", "[", 
+                 RowBox[{
+                  FractionBox[
+                   RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                  RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                SqrtBox[
+                 RowBox[{"Iy", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                  TemplateBox[{"1"},
+                   "C"]}]]}]]}], ")"}], "2"], "+", 
+           RowBox[{
+            FractionBox["1", "Ix"], "Iz", " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SuperscriptBox["Iy", "2"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+                 TemplateBox[{"1"},
+                  "C"], " ", 
+                 RowBox[{"JacobiSN", "[", 
+                  RowBox[{
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                   RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                   TemplateBox[{"1"},
+                    "C"]}]]}]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", "Iy", " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+                 TemplateBox[{"1"},
+                  "C"], " ", 
+                 RowBox[{"JacobiSN", "[", 
+                  RowBox[{
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                   RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                   TemplateBox[{"1"},
+                    "C"]}]]}]]}], ")"}], "2"]}]}], ")"}]}], ")"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"w3", "[", "t", "]"}], "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox["1", 
+         RowBox[{
+          SqrtBox[
+           RowBox[{"Iy", "-", "Iz"}]], " ", 
+          SqrtBox["Iz"]}]]}], 
+       RowBox[{"(", 
+        RowBox[{"\[Sqrt]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", " ", "Iy", " ", "Iz", " ", 
+            TemplateBox[{"2"},
+             "C"]}], "-", 
+           RowBox[{"2", " ", 
+            SuperscriptBox["Iz", "2"], " ", 
+            TemplateBox[{"2"},
+             "C"]}], "+", 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{
+              FractionBox[
+               RowBox[{
+                SqrtBox["2"], " ", 
+                SuperscriptBox["Iy", "2"], " ", 
+                SqrtBox[
+                 RowBox[{"Ix", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+                TemplateBox[{"1"},
+                 "C"], " ", 
+                RowBox[{"JacobiSN", "[", 
+                 RowBox[{
+                  FractionBox[
+                   RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                  RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                SqrtBox[
+                 RowBox[{"Iy", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                  TemplateBox[{"1"},
+                   "C"]}]]}]], "-", 
+              FractionBox[
+               RowBox[{
+                SqrtBox["2"], " ", "Iy", " ", 
+                SqrtBox[
+                 RowBox[{"Ix", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+                TemplateBox[{"1"},
+                 "C"], " ", 
+                RowBox[{"JacobiSN", "[", 
+                 RowBox[{
+                  FractionBox[
+                   RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                  RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                SqrtBox[
+                 RowBox[{"Iy", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                  TemplateBox[{"1"},
+                   "C"]}]]}]]}], ")"}], "2"], "-", 
+           RowBox[{
+            FractionBox["1", "Ix"], "Iy", " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SuperscriptBox["Iy", "2"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+                 TemplateBox[{"1"},
+                  "C"], " ", 
+                 RowBox[{"JacobiSN", "[", 
+                  RowBox[{
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                   RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                   TemplateBox[{"1"},
+                    "C"]}]]}]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", "Iy", " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+                 TemplateBox[{"1"},
+                  "C"], " ", 
+                 RowBox[{"JacobiSN", "[", 
+                  RowBox[{
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]]}], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                   RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                   TemplateBox[{"1"},
+                    "C"]}]]}]]}], ")"}], "2"]}]}], ")"}]}], ")"}]}]}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"w1", "[", "t", "]"}], "\[Rule]", 
+      RowBox[{
+       FractionBox["1", "Ix"], 
+       RowBox[{"(", 
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           SqrtBox["2"], " ", 
+           SuperscriptBox["Iy", "2"], " ", 
+           SqrtBox[
+            RowBox[{"Ix", " ", 
+             RowBox[{"(", 
+              RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+           TemplateBox[{"1"},
+            "C"], " ", 
+           RowBox[{"JacobiSN", "[", 
+            RowBox[{
+             FractionBox[
+              RowBox[{
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]]}], 
+                SqrtBox[
+                 RowBox[{"Iy", "-", "Iz"}]]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]]}], 
+                RowBox[{
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]], " ", 
+                 TemplateBox[{"3"},
+                  "C"]}], 
+                SqrtBox[
+                 RowBox[{"Iy", "-", "Iz"}]]], "+", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]], " ", 
+                 TemplateBox[{"3"},
+                  "C"]}], 
+                RowBox[{
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+             RowBox[{"-", 
+              FractionBox[
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                TemplateBox[{"1"},
+                 "C"]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                TemplateBox[{"2"},
+                 "C"]}]]}]}], "]"}]}], 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+           SqrtBox[
+            RowBox[{"Iy", " ", 
+             RowBox[{"(", 
+              RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+             TemplateBox[{"1"},
+              "C"]}]]}]], "-", 
+         FractionBox[
+          RowBox[{
+           SqrtBox["2"], " ", "Iy", " ", 
+           SqrtBox[
+            RowBox[{"Ix", " ", 
+             RowBox[{"(", 
+              RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+           TemplateBox[{"1"},
+            "C"], " ", 
+           RowBox[{"JacobiSN", "[", 
+            RowBox[{
+             FractionBox[
+              RowBox[{
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]]}], 
+                SqrtBox[
+                 RowBox[{"Iy", "-", "Iz"}]]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]]}], 
+                RowBox[{
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]], " ", 
+                 TemplateBox[{"3"},
+                  "C"]}], 
+                SqrtBox[
+                 RowBox[{"Iy", "-", "Iz"}]]], "+", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]], " ", 
+                 TemplateBox[{"3"},
+                  "C"]}], 
+                RowBox[{
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+             RowBox[{"-", 
+              FractionBox[
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                TemplateBox[{"1"},
+                 "C"]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                TemplateBox[{"2"},
+                 "C"]}]]}]}], "]"}]}], 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+           SqrtBox[
+            RowBox[{"Iy", " ", 
+             RowBox[{"(", 
+              RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+             TemplateBox[{"1"},
+              "C"]}]]}]]}], ")"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"w2", "[", "t", "]"}], "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox["1", 
+         SqrtBox[
+          RowBox[{
+           SuperscriptBox["Iy", "2"], "-", 
+           RowBox[{"Iy", " ", "Iz"}]}]]]}], 
+       RowBox[{"(", 
+        RowBox[{"\[Sqrt]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", " ", 
+            SuperscriptBox["Iy", "2"], " ", 
+            TemplateBox[{"1"},
+             "C"]}], "-", 
+           RowBox[{"2", " ", "Iy", " ", "Iz", " ", 
+            TemplateBox[{"1"},
+             "C"]}], "-", 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{
+              FractionBox[
+               RowBox[{
+                SqrtBox["2"], " ", 
+                SuperscriptBox["Iy", "2"], " ", 
+                SqrtBox[
+                 RowBox[{"Ix", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+                TemplateBox[{"1"},
+                 "C"], " ", 
+                RowBox[{"JacobiSN", "[", 
+                 RowBox[{
+                  FractionBox[
+                   RowBox[{
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                  RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                SqrtBox[
+                 RowBox[{"Iy", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                  TemplateBox[{"1"},
+                   "C"]}]]}]], "-", 
+              FractionBox[
+               RowBox[{
+                SqrtBox["2"], " ", "Iy", " ", 
+                SqrtBox[
+                 RowBox[{"Ix", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+                TemplateBox[{"1"},
+                 "C"], " ", 
+                RowBox[{"JacobiSN", "[", 
+                 RowBox[{
+                  FractionBox[
+                   RowBox[{
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                  RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                SqrtBox[
+                 RowBox[{"Iy", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                  TemplateBox[{"1"},
+                   "C"]}]]}]]}], ")"}], "2"], "+", 
+           RowBox[{
+            FractionBox["1", "Ix"], "Iz", " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SuperscriptBox["Iy", "2"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+                 TemplateBox[{"1"},
+                  "C"], " ", 
+                 RowBox[{"JacobiSN", "[", 
+                  RowBox[{
+                   FractionBox[
+                    RowBox[{
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                   RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                   TemplateBox[{"1"},
+                    "C"]}]]}]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", "Iy", " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+                 TemplateBox[{"1"},
+                  "C"], " ", 
+                 RowBox[{"JacobiSN", "[", 
+                  RowBox[{
+                   FractionBox[
+                    RowBox[{
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                   RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                   TemplateBox[{"1"},
+                    "C"]}]]}]]}], ")"}], "2"]}]}], ")"}]}], ")"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"w3", "[", "t", "]"}], "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox["1", 
+         RowBox[{
+          SqrtBox[
+           RowBox[{"Iy", "-", "Iz"}]], " ", 
+          SqrtBox["Iz"]}]]}], 
+       RowBox[{"(", 
+        RowBox[{"\[Sqrt]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", " ", "Iy", " ", "Iz", " ", 
+            TemplateBox[{"2"},
+             "C"]}], "-", 
+           RowBox[{"2", " ", 
+            SuperscriptBox["Iz", "2"], " ", 
+            TemplateBox[{"2"},
+             "C"]}], "+", 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{
+              FractionBox[
+               RowBox[{
+                SqrtBox["2"], " ", 
+                SuperscriptBox["Iy", "2"], " ", 
+                SqrtBox[
+                 RowBox[{"Ix", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+                TemplateBox[{"1"},
+                 "C"], " ", 
+                RowBox[{"JacobiSN", "[", 
+                 RowBox[{
+                  FractionBox[
+                   RowBox[{
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                  RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                SqrtBox[
+                 RowBox[{"Iy", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                  TemplateBox[{"1"},
+                   "C"]}]]}]], "-", 
+              FractionBox[
+               RowBox[{
+                SqrtBox["2"], " ", "Iy", " ", 
+                SqrtBox[
+                 RowBox[{"Ix", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+                TemplateBox[{"1"},
+                 "C"], " ", 
+                RowBox[{"JacobiSN", "[", 
+                 RowBox[{
+                  FractionBox[
+                   RowBox[{
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                  RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                SqrtBox[
+                 RowBox[{"Iy", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                  TemplateBox[{"1"},
+                   "C"]}]]}]]}], ")"}], "2"], "-", 
+           RowBox[{
+            FractionBox["1", "Ix"], "Iy", " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SuperscriptBox["Iy", "2"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+                 TemplateBox[{"1"},
+                  "C"], " ", 
+                 RowBox[{"JacobiSN", "[", 
+                  RowBox[{
+                   FractionBox[
+                    RowBox[{
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                   RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                   TemplateBox[{"1"},
+                    "C"]}]]}]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", "Iy", " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+                 TemplateBox[{"1"},
+                  "C"], " ", 
+                 RowBox[{"JacobiSN", "[", 
+                  RowBox[{
+                   FractionBox[
+                    RowBox[{
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                   RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                   TemplateBox[{"1"},
+                    "C"]}]]}]]}], ")"}], "2"]}]}], ")"}]}], ")"}]}]}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"w1", "[", "t", "]"}], "\[Rule]", 
+      RowBox[{
+       FractionBox["1", "Ix"], 
+       RowBox[{"(", 
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           SqrtBox["2"], " ", 
+           SuperscriptBox["Iy", "2"], " ", 
+           SqrtBox[
+            RowBox[{"Ix", " ", 
+             RowBox[{"(", 
+              RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+           TemplateBox[{"1"},
+            "C"], " ", 
+           RowBox[{"JacobiSN", "[", 
+            RowBox[{
+             FractionBox[
+              RowBox[{
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]]}], 
+                SqrtBox[
+                 RowBox[{"Iy", "-", "Iz"}]]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]]}], 
+                RowBox[{
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]], " ", 
+                 TemplateBox[{"3"},
+                  "C"]}], 
+                SqrtBox[
+                 RowBox[{"Iy", "-", "Iz"}]]], "+", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]], " ", 
+                 TemplateBox[{"3"},
+                  "C"]}], 
+                RowBox[{
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+             RowBox[{"-", 
+              FractionBox[
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                TemplateBox[{"1"},
+                 "C"]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                TemplateBox[{"2"},
+                 "C"]}]]}]}], "]"}]}], 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+           SqrtBox[
+            RowBox[{"Iy", " ", 
+             RowBox[{"(", 
+              RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+             TemplateBox[{"1"},
+              "C"]}]]}]], "-", 
+         FractionBox[
+          RowBox[{
+           SqrtBox["2"], " ", "Iy", " ", 
+           SqrtBox[
+            RowBox[{"Ix", " ", 
+             RowBox[{"(", 
+              RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+           TemplateBox[{"1"},
+            "C"], " ", 
+           RowBox[{"JacobiSN", "[", 
+            RowBox[{
+             FractionBox[
+              RowBox[{
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]]}], 
+                SqrtBox[
+                 RowBox[{"Iy", "-", "Iz"}]]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]]}], 
+                RowBox[{
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]], " ", 
+                 TemplateBox[{"3"},
+                  "C"]}], 
+                SqrtBox[
+                 RowBox[{"Iy", "-", "Iz"}]]], "+", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SqrtBox["Ix"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                 SqrtBox[
+                  TemplateBox[{"2"},
+                   "C"]], " ", 
+                 TemplateBox[{"3"},
+                  "C"]}], 
+                RowBox[{
+                 SqrtBox["Iy"], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+             RowBox[{"-", 
+              FractionBox[
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                TemplateBox[{"1"},
+                 "C"]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                TemplateBox[{"2"},
+                 "C"]}]]}]}], "]"}]}], 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+           SqrtBox[
+            RowBox[{"Iy", " ", 
+             RowBox[{"(", 
+              RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+             TemplateBox[{"1"},
+              "C"]}]]}]]}], ")"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"w2", "[", "t", "]"}], "\[Rule]", 
+      RowBox[{
+       FractionBox["1", 
+        SqrtBox[
+         RowBox[{
+          SuperscriptBox["Iy", "2"], "-", 
+          RowBox[{"Iy", " ", "Iz"}]}]]], 
+       RowBox[{"(", 
+        RowBox[{"\[Sqrt]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", " ", 
+            SuperscriptBox["Iy", "2"], " ", 
+            TemplateBox[{"1"},
+             "C"]}], "-", 
+           RowBox[{"2", " ", "Iy", " ", "Iz", " ", 
+            TemplateBox[{"1"},
+             "C"]}], "-", 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{
+              FractionBox[
+               RowBox[{
+                SqrtBox["2"], " ", 
+                SuperscriptBox["Iy", "2"], " ", 
+                SqrtBox[
+                 RowBox[{"Ix", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+                TemplateBox[{"1"},
+                 "C"], " ", 
+                RowBox[{"JacobiSN", "[", 
+                 RowBox[{
+                  FractionBox[
+                   RowBox[{
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                  RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                SqrtBox[
+                 RowBox[{"Iy", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                  TemplateBox[{"1"},
+                   "C"]}]]}]], "-", 
+              FractionBox[
+               RowBox[{
+                SqrtBox["2"], " ", "Iy", " ", 
+                SqrtBox[
+                 RowBox[{"Ix", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+                TemplateBox[{"1"},
+                 "C"], " ", 
+                RowBox[{"JacobiSN", "[", 
+                 RowBox[{
+                  FractionBox[
+                   RowBox[{
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                  RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                SqrtBox[
+                 RowBox[{"Iy", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                  TemplateBox[{"1"},
+                   "C"]}]]}]]}], ")"}], "2"], "+", 
+           RowBox[{
+            FractionBox["1", "Ix"], "Iz", " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SuperscriptBox["Iy", "2"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+                 TemplateBox[{"1"},
+                  "C"], " ", 
+                 RowBox[{"JacobiSN", "[", 
+                  RowBox[{
+                   FractionBox[
+                    RowBox[{
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                   RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                   TemplateBox[{"1"},
+                    "C"]}]]}]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", "Iy", " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+                 TemplateBox[{"1"},
+                  "C"], " ", 
+                 RowBox[{"JacobiSN", "[", 
+                  RowBox[{
+                   FractionBox[
+                    RowBox[{
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                   RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                   TemplateBox[{"1"},
+                    "C"]}]]}]]}], ")"}], "2"]}]}], ")"}]}], ")"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"w3", "[", "t", "]"}], "\[Rule]", 
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{
+         SqrtBox[
+          RowBox[{"Iy", "-", "Iz"}]], " ", 
+         SqrtBox["Iz"]}]], 
+       RowBox[{"(", 
+        RowBox[{"\[Sqrt]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", " ", "Iy", " ", "Iz", " ", 
+            TemplateBox[{"2"},
+             "C"]}], "-", 
+           RowBox[{"2", " ", 
+            SuperscriptBox["Iz", "2"], " ", 
+            TemplateBox[{"2"},
+             "C"]}], "+", 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{
+              FractionBox[
+               RowBox[{
+                SqrtBox["2"], " ", 
+                SuperscriptBox["Iy", "2"], " ", 
+                SqrtBox[
+                 RowBox[{"Ix", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+                TemplateBox[{"1"},
+                 "C"], " ", 
+                RowBox[{"JacobiSN", "[", 
+                 RowBox[{
+                  FractionBox[
+                   RowBox[{
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                  RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                SqrtBox[
+                 RowBox[{"Iy", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                  TemplateBox[{"1"},
+                   "C"]}]]}]], "-", 
+              FractionBox[
+               RowBox[{
+                SqrtBox["2"], " ", "Iy", " ", 
+                SqrtBox[
+                 RowBox[{"Ix", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+                TemplateBox[{"1"},
+                 "C"], " ", 
+                RowBox[{"JacobiSN", "[", 
+                 RowBox[{
+                  FractionBox[
+                   RowBox[{
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                  RowBox[{"-", 
+                   FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                SqrtBox[
+                 RowBox[{"Iy", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                  TemplateBox[{"1"},
+                   "C"]}]]}]]}], ")"}], "2"], "-", 
+           RowBox[{
+            FractionBox["1", "Ix"], "Iy", " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", 
+                 SuperscriptBox["Iy", "2"], " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", 
+                 TemplateBox[{"1"},
+                  "C"], " ", 
+                 RowBox[{"JacobiSN", "[", 
+                  RowBox[{
+                   FractionBox[
+                    RowBox[{
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                   RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                   TemplateBox[{"1"},
+                    "C"]}]]}]], "-", 
+               FractionBox[
+                RowBox[{
+                 SqrtBox["2"], " ", "Iy", " ", 
+                 SqrtBox[
+                  RowBox[{"Ix", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}]}]], " ", "Iz", " ", 
+                 TemplateBox[{"1"},
+                  "C"], " ", 
+                 RowBox[{"JacobiSN", "[", 
+                  RowBox[{
+                   FractionBox[
+                    RowBox[{
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", "t", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]], "-", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    SqrtBox["2"], " ", 
+                    SqrtBox["Ix"], " ", 
+                    SqrtBox[
+                    RowBox[{"Ix", "-", "Iz"}]], " ", "Iz", " ", 
+                    SqrtBox[
+                    TemplateBox[{"2"},
+                    "C"]], " ", 
+                    TemplateBox[{"3"},
+                    "C"]}], 
+                    RowBox[{
+                    SqrtBox["Iy"], " ", 
+                    SqrtBox[
+                    RowBox[{"Iy", "-", "Iz"}]]}]]}], "Ix"], ",", 
+                   RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iy"}], ")"}], " ", "Iy", " ", 
+                    TemplateBox[{"1"},
+                    "C"]}], 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"Ix", "-", "Iz"}], ")"}], " ", "Iz", " ", 
+                    TemplateBox[{"2"},
+                    "C"]}]]}]}], "]"}]}], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Ix", "-", "Iz"}], ")"}], " ", 
+                 SqrtBox[
+                  RowBox[{"Iy", " ", 
+                   RowBox[{"(", 
+                    RowBox[{"Iy", "-", "Iz"}], ")"}], " ", 
+                   TemplateBox[{"1"},
+                    "C"]}]]}]]}], ")"}], "2"]}]}], ")"}]}], ")"}]}]}]}], 
+    "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.9939066068084946`*^9},
+ CellLabel->
+  "Out[146]=",ExpressionUUID->"ec7be571-6f48-3447-b048-c003c33ed6ec"]
+}, Open  ]]
+},
+WindowSize->{1269, 641},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"15.0 for Microsoft Windows (64-bit) (May 19, 2026)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"b8e3a7e9-8f39-2a48-b0d0-318310487a48"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 2946, 89, 294, "Input",ExpressionUUID->"d159243d-4fc8-d541-8535-762c295530dc"],
+Cell[3525, 113, 265, 5, 22, "Print",ExpressionUUID->"0023ce98-719f-b944-8417-8895d3f6879b"],
+Cell[3793, 120, 387, 10, 26, "Message",ExpressionUUID->"410dd153-7135-f444-a564-f106b824c046"],
+Cell[4183, 132, 139928, 3821, 4311, "Output",ExpressionUUID->"ec7be571-6f48-3447-b048-c003c33ed6ec"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

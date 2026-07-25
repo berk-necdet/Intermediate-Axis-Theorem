@@ -1,0 +1,272 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      8957,        264]
+NotebookOptionsPosition[      7903,        241]
+NotebookOutlinePosition[      8299,        257]
+CellTagsIndexPosition[      8256,        254]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"FrontEndExecute", "[", 
+   RowBox[{"FrontEndToken", "[", "\"\<DeleteGeneratedCells\>\"", "]"}], "]"}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"FULLY", " ", "NUMERIC", " ", "PARAMETERS", " ", 
+    RowBox[{"(", 
+     RowBox[{"Moments", " ", "of", " ", "Inertia"}], ")"}]}], "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{"Ix", "=", 
+   RowBox[{"8314", "/", "1000"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Iy", "=", 
+   RowBox[{"10065", "/", "1000"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Iz", "=", 
+    RowBox[{"16664", "/", "1000"}]}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"FULLY", " ", "NUMERIC", " ", "INITIAL", " ", "CONDITIONS", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Angular", " ", "Velocities", " ", "at", " ", "t"}], "=", "0"}],
+      ")"}]}], "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{"w1Num", "=", 
+   RowBox[{"1", "/", "10"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"w2Num", "=", "5"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"w3Num", "=", 
+    RowBox[{"1", "/", "10"}]}], ";"}], "\[IndentingNewLine]", "\n", 
+  RowBox[{"(*", 
+   RowBox[{
+   "EULER", " ", "EQUATIONS", " ", "OF", " ", "RIGID", " ", "BODY", " ", 
+    "DYNAMICS"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"eq1", "=", 
+   RowBox[{
+    RowBox[{"Ix", "*", 
+     RowBox[{
+      RowBox[{"w1", "'"}], "[", "t", "]"}]}], "==", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"Iy", "-", "Iz"}], ")"}], "*", 
+     RowBox[{"w2", "[", "t", "]"}], "*", 
+     RowBox[{"w3", "[", "t", "]"}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"eq2", "=", 
+   RowBox[{
+    RowBox[{"Iy", "*", 
+     RowBox[{
+      RowBox[{"w2", "'"}], "[", "t", "]"}]}], "==", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"Iz", "-", "Ix"}], ")"}], "*", 
+     RowBox[{"w3", "[", "t", "]"}], "*", 
+     RowBox[{"w1", "[", "t", "]"}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"eq3", "=", 
+    RowBox[{
+     RowBox[{"Iz", "*", 
+      RowBox[{
+       RowBox[{"w3", "'"}], "[", "t", "]"}]}], "==", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"Ix", "-", "Iy"}], ")"}], "*", 
+      RowBox[{"w1", "[", "t", "]"}], "*", 
+      RowBox[{"w2", "[", "t", "]"}]}]}]}], ";"}], "\n", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"Applying", " ", "the", " ", "initial", " ", "conditions"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"init1", "=", 
+   RowBox[{
+    RowBox[{"w1", "[", "0", "]"}], "==", "w1Num"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"init2", "=", 
+   RowBox[{
+    RowBox[{"w2", "[", "0", "]"}], "==", "w2Num"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"init3", "=", 
+    RowBox[{
+     RowBox[{"w3", "[", "0", "]"}], "==", "w3Num"}]}], ";"}], "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "Print", "[", "\"\<There should be only 1 solution according to existence \
+and uniquness theorem.\>\"", "]"}], ";"}], "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"failingSolution", "=", 
+    RowBox[{"DSolve", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "eq1", ",", "eq2", ",", "eq3", ",", "init1", ",", "init2", ",", 
+        "init3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"w1", "[", "t", "]"}], ",", 
+        RowBox[{"w2", "[", "t", "]"}], ",", 
+        RowBox[{"w3", "[", "t", "]"}]}], "}"}], ",", "t"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"orderedSolution", "=", 
+    RowBox[{"Map", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"w1", "[", "t", "]"}], "->", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"w1", "[", "t", "]"}], "/.", " ", "#"}], ")"}]}], ",", 
+         RowBox[{
+          RowBox[{"w2", "[", "t", "]"}], "->", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"w2", "[", "t", "]"}], "/.", " ", "#"}], ")"}]}], ",", 
+         RowBox[{
+          RowBox[{"w3", "[", "t", "]"}], "->", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"w3", "[", "t", "]"}], "/.", " ", "#"}], ")"}]}]}], "}"}],
+        "&"}], ",", "generalNumericSolution"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", "orderedSolution", \
+"\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.993786696734764*^9, 3.993786744394724*^9}, {
+  3.993787617311325*^9, 3.9937876227933846`*^9}, {3.9937876535876904`*^9, 
+  3.993787742041897*^9}, {3.9937882024119873`*^9, 3.9937882142811756`*^9}, {
+  3.993906051174404*^9, 3.9939060548853455`*^9}, {3.993906302057823*^9, 
+  3.9939063059677086`*^9}},ExpressionUUID->"d237c937-c957-b047-92cd-\
+74d3bd0fd881"],
+
+Cell[BoxData["\<\"There should be only 1 solution according to existence and \
+uniquness theorem.\"\>"], "Print",
+ CellChangeTimes->{3.9939060714455624`*^9},
+ CellLabel->
+  "During evaluation of \
+In[79]:=",ExpressionUUID->"32e4db4f-953c-0641-924c-93d3eca17529"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "DSolve", "bvfail", 
+   "\"For some branches of the general solution, unable to solve the \
+conditions.\"", 2, 94, 15, 24659430243105162149, "Local"},
+  "MessageTemplate",
+  BaseStyle->"MSG"]], "Message",
+ CellChangeTimes->{3.993906072971508*^9},
+ CellLabel->
+  "During evaluation of \
+In[79]:=",ExpressionUUID->"82b7aa36-3d48-424c-b4d2-bb64151a23c6"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "DSolve", "bvfail", 
+   "\"For some branches of the general solution, unable to solve the \
+conditions.\"", 2, 94, 16, 24659430243105162149, "Local"},
+  "MessageTemplate",
+  BaseStyle->"MSG"]], "Message",
+ CellChangeTimes->{3.9939060730364056`*^9},
+ CellLabel->
+  "During evaluation of \
+In[79]:=",ExpressionUUID->"75dec1f2-d9a1-864a-978e-e1f406469de8"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "DSolve", "bvfail", 
+   "\"For some branches of the general solution, unable to solve the \
+conditions.\"", 2, 94, 17, 24659430243105162149, "Local"},
+  "MessageTemplate",
+  BaseStyle->"MSG"]], "Message",
+ CellChangeTimes->{3.993906073100889*^9},
+ CellLabel->
+  "During evaluation of \
+In[79]:=",ExpressionUUID->"0653d83e-261b-f747-ab4b-ed1822690c65"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General", "stop", 
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"DSolve\\\", \\\"::\\\", \
+\\\"bvfail\\\"}], \\\"MessageName\\\"]\\) will be suppressed during this \
+calculation.\"", 2, 94, 18, 24659430243105162149, "Local"},
+  "MessageTemplate",
+  BaseStyle->"MSG"]], "Message",
+ CellChangeTimes->{3.993906073104431*^9},
+ CellLabel->
+  "During evaluation of \
+In[79]:=",ExpressionUUID->"4e37a333-1c2f-f24d-8f0b-2dca32b369e0"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "DSolve", "ifun", 
+   "\"Inverse functions are being used by DSolve, so some solutions may not \
+be found.\"", 2, 94, 19, 24659430243105162149, "Local"},
+  "MessageTemplate",
+  BaseStyle->"MSG"]], "Message",
+ CellChangeTimes->{3.9939060731705227`*^9},
+ CellLabel->
+  "During evaluation of \
+In[79]:=",ExpressionUUID->"8e19be01-e6e8-cf48-aa83-e069b2b35e1c"],
+
+Cell[BoxData["generalNumericSolution"], "Output",
+ CellChangeTimes->{3.9939060731760693`*^9},
+ CellLabel->"Out[96]=",ExpressionUUID->"6d31c75d-15bd-c44c-93c0-e5abd50d43fc"]
+}, Open  ]]
+},
+WindowSize->{1269, 641},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"15.0 for Microsoft Windows (64-bit) (May 19, 2026)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"535b5c61-18a4-5b4a-8c72-73d2b4ec72f2"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 4855, 144, 599, "Input",ExpressionUUID->"d237c937-c957-b047-92cd-74d3bd0fd881"],
+Cell[5434, 168, 262, 5, 22, "Print",ExpressionUUID->"32e4db4f-953c-0641-924c-93d3eca17529"],
+Cell[5699, 175, 382, 10, 26, "Message",ExpressionUUID->"82b7aa36-3d48-424c-b4d2-bb64151a23c6"],
+Cell[6084, 187, 384, 10, 26, "Message",ExpressionUUID->"75dec1f2-d9a1-864a-978e-e1f406469de8"],
+Cell[6471, 199, 382, 10, 26, "Message",ExpressionUUID->"0653d83e-261b-f747-ab4b-ed1822690c65"],
+Cell[6856, 211, 466, 11, 26, "Message",ExpressionUUID->"4e37a333-1c2f-f24d-8f0b-2dca32b369e0"],
+Cell[7325, 224, 387, 10, 26, "Message",ExpressionUUID->"8e19be01-e6e8-cf48-aa83-e069b2b35e1c"],
+Cell[7715, 236, 172, 2, 32, "Output",ExpressionUUID->"6d31c75d-15bd-c44c-93c0-e5abd50d43fc"]
+}, Open  ]]
+}
+]
+*)
+
