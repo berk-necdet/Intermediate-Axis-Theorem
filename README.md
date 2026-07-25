@@ -4,6 +4,10 @@ Welcome to the repository for my demonstration of the Intermediate Axis Theorem!
 
 📺 **[Watch the full mathematical breakdown and physical demonstration on YouTube!]()**
 
+<img width="290" height="262" alt="image" src="https://github.com/user-attachments/assets/e58e82d1-df90-4534-9902-e2f2f0abb0f6" />
+
+
+
 ## 📁 Repository Structure
 
 *   **MATLAB:** Contains the `.m` scripts for 3D numerical simulations, visualizing the object's dynamic movement and tracking its angular velocity over time.
