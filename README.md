@@ -2,7 +2,7 @@
 
 Welcome to the repository for my demonstration of the Intermediate Axis Theorem! This project includes mathematical simulations, numerical analysis, and 3D printable files to visualize and physically prove the rigid body dynamics associated with this fascinating phenomenon.
 
-📺 **[Watch the full mathematical breakdown and physical demonstration on YouTube!]()**
+📺 **[Watch the full mathematical breakdown and physical demonstration on YouTube!]*( https://youtu.be/HFpN6gprBBo?si=PTA-qhsRO3tWEEko )*
 
 <img width="290" height="262" alt="image" src="https://github.com/user-attachments/assets/e58e82d1-df90-4534-9902-e2f2f0abb0f6" />
 
